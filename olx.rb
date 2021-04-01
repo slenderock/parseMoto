@@ -8,10 +8,11 @@ class Olx
   end 
 
   def download
-    {
-      name: fetch_name,
-      price: fetch_price
-    }  
+    p 'olx'
+    # {
+    #   name: fetch_name,
+    #   price: fetch_price
+    # }  
   end
 
   def fetch_name

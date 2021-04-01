@@ -30,3 +30,18 @@ SITES = {
   auto_ria: 'auto.ria.com',
   olx: 'olx.ua'
 }
+
+RESPONSE_INTERFACE = {
+  brand: nil,   
+  model: nil, 
+  year: nil, 
+  price: nil,
+  city: nil,
+  engine: nil
+}
+
+PARSING_ERROR = 'undefined'
+ENGINE_RANGE = {
+  min: 100,
+  max: 1000
+}

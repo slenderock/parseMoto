@@ -3,20 +3,19 @@ require './consts'
 require './auto_ria'
 require './olx'
 
-url = URLS[0]
+URLS.each do |url|
+# url = URLS.first
+  uri = URI url
+  response = Net::HTTP.get uri
 
-p url
+  if url.include?(SITES[:auto_ria])
+    command_class = AutoRia
+  end
 
-uri = URI url
-response = Net::HTTP.get uri
+  if url.include?(SITES[:olx])
+    command_class = Olx
+  end
 
-if url.include?(SITES[:auto_ria])
-  command_class = AutoRia
+  command = command_class.new(response)
+  p command.download
 end
-
-if url.include?(SITES[:olx])
-  command_class = Olx
-end
-
-command = command_class.new(response)
-p command.download
