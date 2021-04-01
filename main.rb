@@ -25,5 +25,6 @@ CSV.open(
     result = command.download
 
     csv << result.values
+    # p result.values
   end
 end

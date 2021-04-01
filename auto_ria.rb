@@ -46,7 +46,7 @@ class AutoRia
   end
   
   def price_css 
-    doc.css(PRICE_TAG).children.to_s
+    doc.css(PRICE_TAG).children.to_s.split('$').first.gsub(' ', '').to_i
   rescue
     PARSING_ERROR
   end

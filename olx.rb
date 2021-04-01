@@ -40,7 +40,7 @@ class Olx
   end
 
   def price_css 
-    doc.css(PRICE_TAG).children.to_s.split('<').first
+    doc.css(PRICE_TAG).children.to_s.split('<').first.gsub(' ', '').to_i
   rescue
     PARSING_ERROR
   end
@@ -60,7 +60,7 @@ class Olx
   def parse_year
     doc.css(YEAR_TAG).children.to_s.strip.split.map(&:to_i).find { |number| number.between?(YEAR_RANGE[:min], YEAR_RANGE[:max]) }
   rescue
-    PARSING_ERROR     
+    PARSING_ERROR
   end
 
   def engine_by_title
