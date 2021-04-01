@@ -1,19 +1,22 @@
-# require 'net/http'
-# require './consts'
-# require './auto_ria'
-# require './olx'
+require 'net/http'
+require './consts'
+require './auto_ria'
+require './olx'
 
-# url = URLS[0]
+url = URLS[0]
 
-# response = Net::HTTP.get url
+p url
 
-# if url.include?(SITES[:auto_ria])
-#   command_class = AutoRia
-# end
+uri = URI url
+response = Net::HTTP.get uri
 
-# if url.include?(SITES[:olx])
-#   command_class = Olx
-# end
+if url.include?(SITES[:auto_ria])
+  command_class = AutoRia
+end
 
-# command = command_class.new(response)
-# p command.download
+if url.include?(SITES[:olx])
+  command_class = Olx
+end
+
+command = command_class.new(response)
+p command.download

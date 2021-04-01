@@ -3,9 +3,9 @@ require 'nokogiri'
 class Olx
   attr_reader :doc
   
-   def initialize(response)
+  def initialize(response)
     @doc = Nokogiri::HTML response
-  def 
+  end 
 
   def download
     {
