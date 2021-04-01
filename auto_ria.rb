@@ -10,9 +10,10 @@ class AutoRia
 
   attr_reader :doc, :title, :attributes
   
-  def initialize(response)
+  def initialize(response, url)
     @doc = Nokogiri::HTML response
     @attributes = RESPONSE_INTERFACE
+    attributes[:url] = url
   end
 
   def download
@@ -52,8 +53,8 @@ class AutoRia
   
   def city_css
     doc.css(CITY_TAG).first.children.to_s.split.first.strip
-  # rescue
-  #   PARSING_ERROR
+  rescue
+    PARSING_ERROR
   end
 
   def parse_engine
